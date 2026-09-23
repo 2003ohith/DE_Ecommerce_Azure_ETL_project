@@ -281,3 +281,25 @@ BI / Analytics Consumers
 - Unity Catalog provides centralized organization and governance of data assets.
 - Analytics Readiness
 - Gold datasets are designed for BI and analytical consumption.
+
+---
+
+## Getting Started
+
+### Prerequisites
+
+- Azure Databricks workspace with Unity Catalog enabled
+- Azure Data Lake Storage Gen2 account linked to the workspace
+- Appropriate permissions on the Unity Catalog (CREATE CATALOG, CREATE SCHEMA, CREATE TABLE)
+
+### Notebook Execution Order
+
+Run the notebooks in the following order:
+
+1. `Catalog_setup_and_Volume_creation/catalog_setup.ipynb` — Create the Unity Catalog, schemas, and external volumes pointing to ADLS Gen2.
+2. `Medallion_Processing_Dim/Raw-to-Bronze-Dim.ipynb` — Ingest raw dimension data into the Bronze layer.
+3. `Medallion_Processing_Dim/Bronze-to-Silver-Dim.ipynb` — Cleanse and standardise dimension data into the Silver layer.
+4. `Medallion_Processing_Dim/Silver-to-Gold-Dim.ipynb` — Build Gold-layer dimension tables (Dim Customer, Dim Product, Dim Category, Dim Brand).
+5. `Medallion_Processing_Fact/Raw-to-Bronze-Fact.ipynb` — Ingest raw fact/order data into the Bronze layer.
+6. `Medallion_Processing_Fact/Bronze-to-Silver-Fact.ipynb` — Cleanse and standardise fact data into the Silver layer.
+7. `Medallion_Processing_Fact/Silver-to-Gold-Fact.ipynb` — Build the Gold-layer Fact Orders / Sales table.
