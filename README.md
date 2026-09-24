@@ -44,7 +44,7 @@ E-Commerce API / Application Data
       BI / Analytics
          Consumers
 ```
-#1. Source Systems
+# 1. Source Systems
 
 The project receives e-commerce data from multiple source systems.
 
@@ -62,7 +62,7 @@ The project receives e-commerce data from multiple source systems.
 - Orders
 - Sales transactions
 
-#2. Azure Data Lake Storage Gen2
+# 2. Azure Data Lake Storage Gen2
 
 The source data is stored in Azure Data Lake Storage Gen2 (ADLS Gen2).
 
@@ -80,7 +80,7 @@ ADLS Gen2
     ├── brands
     └── orders
 ```
-#3. Databricks
+# 3. Databricks
 
 Azure Databricks is used as the main data processing platform.
 
@@ -94,7 +94,7 @@ The data is processed through the Medallion Architecture:
 ```
 Raw → Bronze → Silver → Gold
 ```
-#4. Bronze Layer
+# 4. Bronze Layer
 
 The Bronze layer contains the raw data converted into Delta tables.
 
@@ -125,7 +125,7 @@ Bronze Delta Tables
 ```
 The Bronze layer provides the foundation for downstream transformations.
 
-#5. Silver Layer
+# 5. Silver Layer
 
 The Silver layer contains cleansed, standardized, and refined data.
 
@@ -158,7 +158,7 @@ Silver
 ```
 The Silver layer contains trusted datasets that can be used to create analytical models.
 
-#6. Gold Layer
+# 6. Gold Layer
 
 The Gold layer contains analytics-ready and business-oriented datasets.
 
@@ -192,7 +192,7 @@ Dim Product ---- Fact Orders / Sales ---- Dim Category
 - Add regional attributes
 - Create analytics-ready datasets
 
-#7. Unity Catalog
+# 7. Unity Catalog
 
 Unity Catalog is used for data organization and governance.
 
@@ -221,7 +221,7 @@ Unity Catalog provides centralized management for:
 - Access permissions
 - Data governance
 
-#8. End-to-End Data Flow
+# 8. End-to-End Data Flow
 
 The complete data flow is:
 ```
@@ -249,7 +249,7 @@ Analytics-Ready Data
 BI / Analytics Consumers
 ```
 
-#9. Data Layer Responsibilities
+# 9. Data Layer Responsibilities
 | Layer   | Purpose                    | Main Operations                          |
 | ------- | -------------------------- | ---------------------------------------- |
 | Landing | Store incoming source data | Raw file storage                         |
@@ -258,7 +258,7 @@ BI / Analytics Consumers
 | Gold    | Create business-ready data | Joins, dimensions, facts, business rules |
 | BI      | Consume analytical data    | Reporting and analytics                  |
 
-#10.Technology Stack
+# 10.Technology Stack
 
 | Technology    | Role                             |
 | ------------- | -------------------------------- |
@@ -270,7 +270,7 @@ BI / Analytics Consumers
 | Unity Catalog | Governance and Data Organization |
 | BI Tools      | Analytics and Reporting          |
 
-#11. Key Design Principles
+# 11. Key Design Principles
 - Separation of Data Layers
 - Raw, cleansed, and analytical data are separated into different layers.
 - Data Quality
@@ -303,3 +303,7 @@ Run the notebooks in the following order:
 5. `Medallion_Processing_Fact/Raw-to-Bronze-Fact.ipynb` — Ingest raw fact/order data into the Bronze layer.
 6. `Medallion_Processing_Fact/Bronze-to-Silver-Fact.ipynb` — Cleanse and standardise fact data into the Silver layer.
 7. `Medallion_Processing_Fact/Silver-to-Gold-Fact.ipynb` — Build the Gold-layer Fact Orders / Sales table.
+
+# **Medallion Architecture Diagram:**
+
+<img width="1536" height="1024" alt="Ecommerce_architecture_diagram" src="https://github.com/user-attachments/assets/5d4dceb0-8f0a-411a-b4de-eead6abef53c" />
